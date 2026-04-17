@@ -26,12 +26,12 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 0 60px;
-  height: 84px; /* Más grande en web */
-  background: rgba(0, 0, 0, 0.6); /* Transparencia para ver el brillo */
+  height: 110px; /* Mucho más ancha (una pulgada aprox más) */
+  background: rgba(0, 0, 0, 0.65); /* Transparencia para ver el brillo */
   backdrop-filter: blur(25px) saturate(180%);
   -webkit-backdrop-filter: blur(25px) saturate(180%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.8), 0 0 25px rgba(255,255,255,0.08); /* Resplandor permanente */
+  box-shadow: 0 8px 32px rgba(0,0,0,0.8), 0 0 25px rgba(255,255,255,0.08);
   box-sizing: border-box;
   z-index: 100;
 }
@@ -39,7 +39,7 @@ body {
 .nav-brand {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 18px;
   text-decoration: none !important;
   cursor: pointer;
   color: #ffffff !important;
@@ -59,7 +59,7 @@ body {
 .nav h1 {
   margin: 0;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.45rem; /* Un poco más grande */
+  font-size: 1.55rem; /* Un poco más grande */
   letter-spacing: 0.08em;
   font-weight: 700;
   color: #ffffff !important;
@@ -76,16 +76,16 @@ body {
 .nav nav {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .nav nav a {
   color: rgba(255,255,255,0.6);
-  padding: 10px 20px;
-  border-radius: 10px;
+  padding: 12px 24px;
+  border-radius: 12px;
   text-decoration: none;
   transition: all 0.25s ease;
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   font-weight: 500;
   letter-spacing: 0.04em;
 }
@@ -105,10 +105,10 @@ body {
 .nav-toggle {
   display: none;
   flex-direction: column;
-  gap: 5px;
+  gap: 6px;
   cursor: pointer;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 12px;
+  border-radius: 12px;
   transition: background 0.2s;
   background: none;
   border: none;
@@ -120,7 +120,7 @@ body {
 
 .nav-toggle span {
   display: block;
-  width: 24px;
+  width: 26px;
   height: 2px;
   background: #ffffff;
   border-radius: 2px;
@@ -134,7 +134,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 140px 20px 60px;
+  padding: 160px 20px 60px; /* Más padding superior por la nav ancha */
   box-sizing: border-box;
   gap: 40px;
 }
@@ -322,7 +322,7 @@ body {
 }
 
 /* ===== PÁGINAS INTERNAS ===== */
-.content-page { padding-top: 110px; min-height: 100vh; }
+.content-page { padding-top: 140px; min-height: 100vh; }
 
 .content-section {
   max-width: 1100px;
@@ -450,26 +450,26 @@ body {
 
 /* ===== HAMBURGER ANIMADO (móvil) ===== */
 .nav-toggle.active span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
+  transform: translateY(8px) rotate(45deg);
 }
 .nav-toggle.active span:nth-child(2) {
   opacity: 0;
   transform: scaleX(0);
 }
 .nav-toggle.active span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
+  transform: translateY(-8px) rotate(-45deg);
 }
 
 /* ===== RESPONSIVE MÓVIL ===== */
 @media (max-width: 768px) {
-  .nav { padding: 0 20px; height: 64px; }
-  .nav h1 { font-size: 1.1rem; }
-  .nav-logo { width: 32px; height: 32px; }
+  .nav { padding: 0 20px; height: 80px; } /* Más ancha también en móvil */
+  .nav h1 { font-size: 1.15rem; }
+  .nav-logo { width: 36px; height: 36px; }
   .nav-toggle { display: flex; }
   .nav nav {
     display: none;
     position: absolute;
-    top: 64px;
+    top: 80px;
     left: 0;
     right: 0;
     flex-direction: column;
@@ -481,8 +481,8 @@ body {
     border-bottom: 1px solid rgba(255,255,255,0.25);
   }
   .nav nav.open { display: flex; }
-  .nav nav a { padding: 12px 16px; font-size: 0.95rem; border-radius: 10px; width: 100%; box-sizing: border-box; }
-  .hero { padding: 100px 16px 48px; gap: 24px; }
+  .nav nav a { padding: 14px 16px; font-size: 1rem; border-radius: 12px; width: 100%; box-sizing: border-box; }
+  .hero { padding: 120px 16px 48px; gap: 24px; }
   .hero-text { padding: 20px; border-radius: 24px; }
   .hero h2 { font-size: clamp(2rem, 9vw, 3rem); }
   .grid { grid-template-columns: 1fr; padding: 8px 16px 32px; gap: 12px; }
@@ -494,5 +494,5 @@ body {
   .two-col { grid-template-columns: 1fr; }
   .content-section { padding: 36px 16px; }
   .glass-block { padding: 32px 24px; border-radius: 24px; }
-  .content-page { padding-top: 80px; }
+  .content-page { padding-top: 110px; }
 }
