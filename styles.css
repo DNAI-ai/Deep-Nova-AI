@@ -27,11 +27,11 @@ body {
   align-items: center;
   padding: 0 60px;
   height: 72px;
-  background: rgba(0, 0, 0, 0.75); /* Cristal negro más opaco para legibilidad */
-  backdrop-filter: blur(20px) saturate(150%);
-  -webkit-backdrop-filter: blur(20px) saturate(150%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.8); /* Más opaco para legibilidad */
+  backdrop-filter: blur(30px) saturate(150%); /* Blur más intenso */
+  -webkit-backdrop-filter: blur(30px) saturate(150%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.8);
   box-sizing: border-box;
   z-index: 100;
 }
@@ -136,17 +136,19 @@ body {
   align-items: center;
   padding: 120px 20px 60px;
   box-sizing: border-box;
-  gap: 32px;
+  gap: 40px;
 }
 
 .hero-text {
   text-align: center;
   margin-bottom: 8px;
-  background: rgba(0, 0, 0, 0.4); /* Fondo sutil para legibilidad */
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  padding: 20px;
-  border-radius: 24px;
+  background: rgba(0, 0, 0, 0.6); /* Más opaco */
+  backdrop-filter: blur(35px); /* Blur muy intenso */
+  -webkit-backdrop-filter: blur(35px);
+  padding: 30px 40px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.8);
 }
 
 .hero h2 {
@@ -160,95 +162,95 @@ body {
 }
 
 .hero p {
-  opacity: 0.8;
-  font-size: 1.05rem;
-  margin: 12px 0 0;
+  opacity: 0.9;
+  font-size: 1.1rem;
+  margin: 15px 0 0;
   font-weight: 400;
   letter-spacing: 0.02em;
 }
 
-/* ===== CARRUSEL — Ampliado en escritorio ===== */
+/* ===== CARRUSEL — GIGANTE en escritorio ===== */
 .carousel {
   position: relative;
-  width: min(1400px, 96vw); /* Más ancho en escritorio */
+  width: min(1600px, 98vw); /* Aún más ancho */
   margin: 0 auto;
 }
 
 .carousel-track {
   display: flex;
   overflow: hidden;
-  border-radius: 24px;
-  border: 1px solid rgba(255,255,255,0.15);
-  background: rgba(0,0,0,0.6); /* Más oscuro para legibilidad */
-  backdrop-filter: blur(25px); /* Más blur */
-  -webkit-backdrop-filter: blur(25px);
-  box-shadow: 0 15px 50px rgba(0,0,0,0.9);
+  border-radius: 30px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(0,0,0,0.7); /* Más oscuro */
+  backdrop-filter: blur(40px); /* Blur extremo */
+  -webkit-backdrop-filter: blur(40px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.95);
 }
 
 .carousel-slide {
   min-width: 100%;
-  height: 540px; /* Más alto en escritorio */
+  height: 620px; /* Aún más alto */
   display: flex;
   align-items: center;
-  border-radius: 24px;
-  padding: 0 60px;
+  border-radius: 30px;
+  padding: 0 80px;
   box-sizing: border-box;
-  gap: 60px;
+  gap: 80px;
 }
 
 .slide-layout-right { flex-direction: row; }
 .slide-layout-left  { flex-direction: row-reverse; }
 
 .slide-image {
-  flex: 0 0 65%;
-  height: 440px;
-  border-radius: 20px;
+  flex: 0 0 68%; /* Ocupa más espacio */
+  height: 500px;
+  border-radius: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 12px;
-  border: 1px solid rgba(255,255,255,0.1);
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
 }
 
-.slide-image svg { opacity: 0.4; color: #ffffff; }
+.slide-image svg { opacity: 0.5; color: #ffffff; }
 
 .slide-text {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
   padding: 8px 0;
 }
 
 .slide-text h3 {
   margin: 0;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
   font-weight: 700;
   color: #ffffff;
-  line-height: 1.25;
+  line-height: 1.2;
   letter-spacing: -0.01em;
 }
 
 .slide-text p {
   margin: 0;
-  opacity: 0.8;
-  font-size: 1rem;
+  opacity: 0.9;
+  font-size: 1.1rem;
   line-height: 1.8;
   font-weight: 400;
 }
 
 .placeholder-slide {
-  border: 1px dashed rgba(255,255,255,0.25);
+  border: 1px dashed rgba(255,255,255,0.3);
 }
 
 .carousel-label {
-  opacity: 0.4;
-  font-size: 0.85rem;
+  opacity: 0.5;
+  font-size: 0.9rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-weight: 500;
@@ -257,116 +259,117 @@ body {
 .carousel-dots {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin-top: 24px;
+  gap: 12px;
+  margin-top: 30px;
 }
 
 .dot {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.3);
   cursor: pointer;
   transition: all 0.35s ease;
 }
 
 .dot.active {
   background: #ffffff;
-  transform: scale(1.4);
-  box-shadow: 0 0 10px rgba(255,255,255,0.6);
+  transform: scale(1.5);
+  box-shadow: 0 0 12px rgba(255,255,255,0.7);
 }
 
 /* ===== GRID BOTONES — efecto cristal negro ===== */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 24px;
   padding: 20px 60px 40px;
-  max-width: 1200px;
+  max-width: 1300px;
   margin: 0 auto;
   width: 100%;
   box-sizing: border-box;
 }
 
 .card {
-  padding: 32px 40px;
-  background: rgba(0, 0, 0, 0.6); /* Más opaco */
-  backdrop-filter: blur(20px); /* Más blur */
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 20px;
+  padding: 36px 44px;
+  background: rgba(0, 0, 0, 0.75); /* Más opaco */
+  backdrop-filter: blur(35px); /* Blur muy intenso */
+  -webkit-backdrop-filter: blur(35px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 24px;
   text-decoration: none;
   color: #ffffff;
   transition: all 0.35s ease;
   text-align: center;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 600;
   letter-spacing: 0.04em;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.8);
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100px;
+  min-height: 110px;
 }
 
 .card:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255,255,255,0.4);
-  transform: translateY(-5px) scale(1.03);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255,255,255,0.5);
+  transform: translateY(-6px) scale(1.04);
 }
 
 /* ===== PÁGINAS INTERNAS ===== */
-.content-page { padding-top: 90px; min-height: 100vh; }
+.content-page { padding-top: 100px; min-height: 100vh; }
 
 .content-section {
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 60px 40px;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 50px;
 }
 
 .section-title {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(2rem, 5vw, 3.4rem);
+  font-size: clamp(2.2rem, 6vw, 3.8rem);
   font-weight: 700;
   color: #ffffff;
-  margin: 0 0 8px;
+  margin: 0 0 10px;
   letter-spacing: -0.02em;
   line-height: 1.1;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  padding: 10px 20px;
-  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  padding: 15px 30px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   display: inline-block;
 }
 
 .section-subtitle {
-  opacity: 0.8;
-  font-size: 1.1rem;
-  margin: 10px 0 0;
+  opacity: 0.9;
+  font-size: 1.2rem;
+  margin: 15px 0 0;
   font-weight: 400;
   letter-spacing: 0.02em;
 }
 
 /* Bloque de texto — cristal */
 .glass-block {
-  background: rgba(0,0,0,0.65); /* Más opaco */
-  backdrop-filter: blur(25px); /* Más blur */
-  -webkit-backdrop-filter: blur(25px);
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 24px;
-  padding: 40px 48px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.8); /* Muy opaco */
+  backdrop-filter: blur(40px); /* Blur extremo */
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 30px;
+  padding: 48px 56px;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.9);
 }
 
 .glass-block h3 {
-  margin: 0 0 16px;
+  margin: 0 0 20px;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   font-weight: 600;
   color: #ffffff;
   letter-spacing: 0.01em;
@@ -374,66 +377,66 @@ body {
 
 .glass-block p {
   margin: 0;
-  opacity: 0.8;
-  line-height: 1.8;
-  font-size: 1rem;
+  opacity: 0.9;
+  line-height: 1.9;
+  font-size: 1.1rem;
   font-weight: 400;
 }
 
 /* Zona imagen/foto */
 .media-placeholder {
-  background: rgba(255,255,255,0.03);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border: 1px dashed rgba(255,255,255,0.25);
-  border-radius: 24px;
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px dashed rgba(255,255,255,0.3);
+  border-radius: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 12px;
-  color: rgba(255,255,255,0.4);
-  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  font-size: 0.9rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  min-height: 280px;
+  min-height: 320px;
   transition: 0.3s;
 }
 
-.media-placeholder:hover { border-color: rgba(255,255,255,0.5); }
-.media-placeholder svg { opacity: 0.5; color: #ffffff; }
+.media-placeholder:hover { border-color: rgba(255,255,255,0.6); }
+.media-placeholder svg { opacity: 0.6; color: #ffffff; }
 
 /* Zona vídeo */
 .video-placeholder {
-  background: rgba(255,255,255,0.03);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border: 1px dashed rgba(255,255,255,0.25);
-  border-radius: 24px;
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px dashed rgba(255,255,255,0.3);
+  border-radius: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 12px;
-  color: rgba(255,255,255,0.4);
-  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  font-size: 0.9rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  min-height: 340px;
+  min-height: 380px;
   transition: 0.3s;
 }
 
-.video-placeholder:hover { border-color: rgba(255,255,255,0.5); }
+.video-placeholder:hover { border-color: rgba(255,255,255,0.6); }
 
 /* Grid de dos columnas para media */
-.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
 
 /* ===== FOOTER ===== */
 .footer {
   text-align: center;
-  font-size: 0.8rem;
-  opacity: 0.5;
-  margin: 80px 0 40px;
+  font-size: 0.85rem;
+  opacity: 0.6;
+  margin: 100px 0 50px;
   letter-spacing: 0.04em;
   font-weight: 400;
   color: #ffffff;
@@ -467,21 +470,23 @@ body {
     gap: 4px;
     padding: 12px 16px 16px;
     background: rgba(0, 0, 0, 0.98);
-    backdrop-filter: blur(32px);
-    -webkit-backdrop-filter: blur(32px);
-    border-bottom: 1px solid rgba(255,255,255,0.15);
+    backdrop-filter: blur(35px);
+    -webkit-backdrop-filter: blur(35px);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
   }
   .nav nav.open { display: flex; }
   .nav nav a { padding: 12px 16px; font-size: 0.95rem; border-radius: 10px; width: 100%; box-sizing: border-box; }
   .hero { padding: 96px 16px 48px; gap: 24px; }
+  .hero-text { padding: 20px; border-radius: 24px; }
   .hero h2 { font-size: clamp(2rem, 9vw, 3rem); }
   .grid { grid-template-columns: 1fr; padding: 8px 16px 32px; gap: 12px; }
-  .card { min-height: 64px; padding: 20px 24px; }
+  .card { min-height: 64px; padding: 20px 24px; border-radius: 16px; }
   .carousel { width: 92vw; }
-  .carousel-slide { height: auto; min-height: 220px; flex-direction: column !important; padding: 24px 20px; gap: 20px; }
-  .slide-image { flex: 0 0 auto; width: 100%; height: 180px; }
+  .carousel-track { border-radius: 24px; }
+  .carousel-slide { height: auto; min-height: 220px; flex-direction: column !important; padding: 24px 20px; gap: 20px; border-radius: 24px; }
+  .slide-image { flex: 0 0 auto; width: 100%; height: 180px; border-radius: 16px; }
   .two-col { grid-template-columns: 1fr; }
   .content-section { padding: 36px 16px; }
-  .glass-block { padding: 28px 24px; }
+  .glass-block { padding: 32px 24px; border-radius: 24px; }
   .content-page { padding-top: 80px; }
 }

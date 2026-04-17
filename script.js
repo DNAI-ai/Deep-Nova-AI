@@ -17,7 +17,6 @@
   window.addEventListener('resize', resize);
 
   // Parámetros para el "mar" de partículas
-  // Más densidad en escritorio, menos en móvil para rendimiento
   let ROWS = 45;
   let COLS = 45;
   let particles = [];
@@ -34,7 +33,6 @@
           y: (i / ROWS) * H,
           baseX: (j / COLS) * W,
           baseY: (i / ROWS) * H,
-          // Partículas más pequeñas en móvil
           size: isMobile ? (Math.random() * 0.8 + 0.3) : (Math.random() * 1.5 + 0.5),
           phase: Math.random() * Math.PI * 2,
           offset: (i + j) * 0.1
@@ -43,20 +41,20 @@
     }
   }
 
-  // t incrementa más lento para que el movimiento sea pausado
+  // t incrementa MUY lento para que el movimiento sea extra pausado
   let t = 0;
   function draw() {
     // Fondo negro puro con estela mínima
     ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
     ctx.fillRect(0, 0, W, H);
 
-    // Velocidad reducida (antes 0.02)
-    t += 0.012;
+    // Velocidad extra reducida (antes 0.012)
+    t += isMobile ? 0.01 : 0.007;
 
     for (const p of particles) {
-      // Movimiento ondulante tipo mar - Amplitud reducida para suavidad
-      const waveX = Math.sin(t + p.offset) * (isMobile ? 8 : 12);
-      const waveY = Math.cos(t * 0.8 + p.offset) * (isMobile ? 12 : 18);
+      // Movimiento ondulante tipo mar - Amplitud suave
+      const waveX = Math.sin(t + p.offset) * (isMobile ? 8 : 15);
+      const waveY = Math.cos(t * 0.8 + p.offset) * (isMobile ? 12 : 20);
       
       const currentX = p.baseX + waveX;
       const currentY = p.baseY + waveY;
@@ -70,7 +68,7 @@
       ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
       ctx.fill();
 
-      // Destello ocasional más suave
+      // Destello ocasional suave
       if (brightness > 0.97) {
         ctx.beginPath();
         ctx.arc(currentX, currentY, p.size * 1.8, 0, Math.PI * 2);
