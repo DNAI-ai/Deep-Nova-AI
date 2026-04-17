@@ -6,20 +6,27 @@
   const ctx = canvas.getContext('2d');
 
   let W, H;
+  let isMobile = false;
+
   function resize() {
     W = canvas.width  = window.innerWidth;
     H = canvas.height = window.innerHeight;
+    isMobile = W < 768;
     initParticles();
   }
   window.addEventListener('resize', resize);
 
   // Parámetros para el "mar" de partículas
-  const ROWS = 45;
-  const COLS = 45;
+  // Más densidad en escritorio, menos en móvil para rendimiento
+  let ROWS = 45;
+  let COLS = 45;
   let particles = [];
 
   function initParticles() {
     particles = [];
+    ROWS = isMobile ? 30 : 45;
+    COLS = isMobile ? 30 : 45;
+    
     for (let i = 0; i < ROWS; i++) {
       for (let j = 0; j < COLS; j++) {
         particles.push({
@@ -27,7 +34,8 @@
           y: (i / ROWS) * H,
           baseX: (j / COLS) * W,
           baseY: (i / ROWS) * H,
-          size: Math.random() * 1.5 + 0.5,
+          // Partículas más pequeñas en móvil
+          size: isMobile ? (Math.random() * 0.8 + 0.3) : (Math.random() * 1.5 + 0.5),
           phase: Math.random() * Math.PI * 2,
           offset: (i + j) * 0.1
         });
@@ -35,36 +43,38 @@
     }
   }
 
+  // t incrementa más lento para que el movimiento sea pausado
   let t = 0;
   function draw() {
     // Fondo negro puro con estela mínima
     ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
     ctx.fillRect(0, 0, W, H);
 
-    t += 0.02;
+    // Velocidad reducida (antes 0.02)
+    t += 0.012;
 
     for (const p of particles) {
-      // Movimiento ondulante tipo mar
-      const waveX = Math.sin(t + p.offset) * 15;
-      const waveY = Math.cos(t * 0.8 + p.offset) * 20;
+      // Movimiento ondulante tipo mar - Amplitud reducida para suavidad
+      const waveX = Math.sin(t + p.offset) * (isMobile ? 8 : 12);
+      const waveY = Math.cos(t * 0.8 + p.offset) * (isMobile ? 12 : 18);
       
       const currentX = p.baseX + waveX;
       const currentY = p.baseY + waveY;
 
       // Brillo variable según la onda
       const brightness = Math.sin(t + p.phase) * 0.5 + 0.5;
-      const alpha = 0.1 + brightness * 0.6;
+      const alpha = 0.08 + brightness * 0.5;
 
       ctx.beginPath();
       ctx.arc(currentX, currentY, p.size, 0, Math.PI * 2);
       ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
       ctx.fill();
 
-      // Destello ocasional más fuerte
-      if (brightness > 0.95) {
+      // Destello ocasional más suave
+      if (brightness > 0.97) {
         ctx.beginPath();
-        ctx.arc(currentX, currentY, p.size * 2, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${alpha * 0.3})`;
+        ctx.arc(currentX, currentY, p.size * 1.8, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${alpha * 0.25})`;
         ctx.fill();
       }
     }
