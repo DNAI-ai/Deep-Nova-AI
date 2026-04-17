@@ -1,4 +1,4 @@
-// ===== PARTÍCULAS — Mar de partículas ondulantes con BRILLO POTENCIADO =====
+// ===== PARTÍCULAS OCEÁNICAS — olas brillantes con cambio de color suave =====
 (function () {
   const canvas = document.createElement('canvas');
   canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;';
@@ -6,86 +6,78 @@
   const ctx = canvas.getContext('2d');
 
   let W, H;
-  let isMobile = false;
-
   function resize() {
-    W = canvas.width  = window.innerWidth;
+    W = canvas.width = window.innerWidth;
     H = canvas.height = window.innerHeight;
-    isMobile = W < 768;
     initParticles();
   }
   window.addEventListener('resize', resize);
 
-  let ROWS = 45;
-  let COLS = 45;
-  let particles = [];
+  const NUM = 900;
+  let parts = [];
 
   function initParticles() {
-    particles = [];
-    ROWS = isMobile ? 32 : 48;
-    COLS = isMobile ? 32 : 48;
-    
-    for (let i = 0; i < ROWS; i++) {
-      for (let j = 0; j < COLS; j++) {
-        particles.push({
-          x: (j / COLS) * W,
-          y: (i / ROWS) * H,
-          baseX: (j / COLS) * W,
-          baseY: (i / ROWS) * H,
-          size: isMobile ? (Math.random() * 1.2 + 0.4) : (Math.random() * 2.0 + 0.6),
-          phase: Math.random() * Math.PI * 2,
-          offset: (i + j) * 0.12,
-          sparkleSpeed: Math.random() * 0.05 + 0.02
-        });
-      }
+    parts = [];
+    for (let i = 0; i < NUM; i++) {
+      parts.push({
+        x:     Math.random() * W,
+        y:     Math.random() * H,
+        ox:    Math.random() * W,   // origin x para noise base
+        oy:    Math.random() * H,
+        speed: Math.random() * 0.4 + 0.15,
+        size:  Math.random() * 2.2 + 0.5,
+        phase: Math.random() * Math.PI * 2,
+        hue:   Math.random() * 60,  // offset de color individual
+      });
     }
   }
 
+  // Paleta: azul → cian → verde agua → violeta, ciclo suave
+  // hueBase va de 180 (cian) hasta 300 (violeta) y vuelve
+  let hueBase = 190;
+  let hueDir  = 0.12;
+
   let t = 0;
+
   function draw() {
-    // Fondo negro con estela mínima para que el brillo destaque
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.12)';
+    // Fondo con trail oscuro
+    ctx.fillStyle = 'rgba(3, 6, 18, 0.22)';
     ctx.fillRect(0, 0, W, H);
 
-    t += isMobile ? 0.008 : 0.006;
+    hueBase += hueDir;
+    if (hueBase > 270 || hueBase < 170) hueDir *= -1;
 
-    for (const p of particles) {
-      const waveX = Math.sin(t + p.offset) * (isMobile ? 10 : 18);
-      const waveY = Math.cos(t * 0.7 + p.offset) * (isMobile ? 15 : 25);
-      
-      const currentX = p.baseX + waveX;
-      const currentY = p.baseY + waveY;
+    t += 0.008;
 
-      // Brillo variable con mayor intensidad
-      const brightness = Math.sin(t * 1.5 + p.phase) * 0.5 + 0.5;
-      const alpha = 0.15 + brightness * 0.75; // Base de brillo más alta
+    for (const p of parts) {
+      // Campo de flujo: onda 2D senoidal que simula corriente de agua
+      const nx  = p.x * 0.0055;
+      const ny  = p.y * 0.0055;
+      const angle = (
+        Math.sin(nx + t) * Math.cos(ny * 0.7 + t * 0.6) +
+        Math.sin(nx * 1.3 - t * 0.5) * 0.5 +
+        Math.cos(p.phase + t * 0.4) * 0.3
+      ) * Math.PI * 2;
 
-      // Dibujar resplandor (glow)
-      if (brightness > 0.7) {
-        const glowSize = p.size * (isMobile ? 4 : 6);
-        const gradient = ctx.createRadialGradient(currentX, currentY, 0, currentX, currentY, glowSize);
-        gradient.addColorStop(0, `rgba(255, 255, 255, ${alpha * 0.4})`);
-        gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
-        
-        ctx.beginPath();
-        ctx.arc(currentX, currentY, glowSize, 0, Math.PI * 2);
-        ctx.fillStyle = gradient;
-        ctx.fill();
-      }
+      p.x += Math.cos(angle) * p.speed;
+      p.y += Math.sin(angle) * p.speed;
 
-      // Núcleo de la partícula
+      // Wrap alrededor de pantalla
+      if (p.x < -2)  p.x = W + 2;
+      if (p.x > W+2) p.x = -2;
+      if (p.y < -2)  p.y = H + 2;
+      if (p.y > H+2) p.y = -2;
+
+      // Color: tono global + offset individual, brillo varía con movimiento
+      const hue  = (hueBase + p.hue + Math.sin(t + p.phase) * 18) % 360;
+      const sat  = 75 + Math.sin(t * 0.7 + p.phase) * 15;
+      const lum  = 55 + Math.sin(t + p.phase * 0.5) * 18;
+      const alpha = 0.45 + Math.sin(t * 1.2 + p.phase) * 0.2;
+
       ctx.beginPath();
-      ctx.arc(currentX, currentY, p.size, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = `hsla(${hue},${sat}%,${lum}%,${alpha})`;
       ctx.fill();
-
-      // Destello extra brillante (sparkle)
-      if (brightness > 0.94) {
-        ctx.beginPath();
-        ctx.arc(currentX, currentY, p.size * 1.5, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${alpha * 0.6})`;
-        ctx.fill();
-      }
     }
 
     requestAnimationFrame(draw);
@@ -95,10 +87,8 @@
   draw();
 })();
 
-
-// ===== CARRUSEL — 8 s por slide, bucle continuo =====
+// ===== CARRUSEL =====
 let currentSlide = 0;
-let carouselTimer = null;
 
 function moveCarousel(dir) {
   const slides = document.querySelectorAll('.carousel-slide');
@@ -110,7 +100,6 @@ function moveCarousel(dir) {
 function goToSlide(index) {
   currentSlide = index;
   updateCarousel();
-  resetCarouselTimer();
 }
 
 function updateCarousel() {
@@ -118,38 +107,16 @@ function updateCarousel() {
   const dots  = document.querySelectorAll('.dot');
   if (!track) return;
   track.style.transform  = `translateX(-${currentSlide * 100}%)`;
-  track.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+  track.style.transition = 'transform 0.5s ease';
   dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
-}
-
-function resetCarouselTimer() {
-  if (carouselTimer) clearInterval(carouselTimer);
-  carouselTimer = setInterval(function () { moveCarousel(1); }, 8000);
 }
 
 document.addEventListener('DOMContentLoaded', function () {
   updateCarousel();
-  resetCarouselTimer();
+
+  // Auto-avance del carrusel cada 3s
+  setInterval(function () { moveCarousel(1); }, 3000);
 });
 
 
-// ===== NAV MÓVIL — hamburger toggle =====
-function toggleNav() {
-  const nav = document.getElementById('main-nav');
-  const btn = document.querySelector('.nav-toggle');
-  if (!nav) return;
-  nav.classList.toggle('open');
-  if (btn) btn.classList.toggle('active');
-}
 
-document.addEventListener('DOMContentLoaded', function () {
-  const links = document.querySelectorAll('#main-nav a');
-  links.forEach(function (link) {
-    link.addEventListener('click', function () {
-      const nav = document.getElementById('main-nav');
-      const btn = document.querySelector('.nav-toggle');
-      if (nav) nav.classList.remove('open');
-      if (btn) btn.classList.remove('active');
-    });
-  });
-});
