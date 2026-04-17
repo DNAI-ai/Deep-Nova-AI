@@ -26,8 +26,8 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 0 60px;
-  height: 110px; /* Mucho más ancha (una pulgada aprox más) */
-  background: rgba(0, 0, 0, 0.65); /* Transparencia para ver el brillo */
+  height: 110px;
+  background: rgba(0, 0, 0, 0.65);
   backdrop-filter: blur(25px) saturate(180%);
   -webkit-backdrop-filter: blur(25px) saturate(180%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
@@ -43,11 +43,22 @@ body {
   text-decoration: none !important;
   cursor: pointer;
   color: #ffffff !important;
+  position: relative;
 }
 
+/* Efecto Glitch en Logo al Hover */
 .nav-brand:hover .nav-logo {
-  filter: drop-shadow(0 0 15px rgba(255,255,255,0.7));
-  transform: scale(1.05);
+  animation: glitch-logo 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+  filter: drop-shadow(0 0 15px rgba(255,255,255,0.8));
+}
+
+@keyframes glitch-logo {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
 }
 
 .nav-logo {
@@ -59,7 +70,7 @@ body {
 .nav h1 {
   margin: 0;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.55rem; /* Un poco más grande */
+  font-size: 1.55rem;
   letter-spacing: 0.08em;
   font-weight: 700;
   color: #ffffff !important;
@@ -71,6 +82,7 @@ body {
 
 .nav-brand:hover h1 {
   opacity: 0.8;
+  text-shadow: 2px 0 rgba(255,255,255,0.3), -2px 0 rgba(255,255,255,0.3);
 }
 
 .nav nav {
@@ -84,15 +96,34 @@ body {
   padding: 12px 24px;
   border-radius: 12px;
   text-decoration: none;
-  transition: all 0.25s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   font-size: 0.95rem;
   font-weight: 500;
   letter-spacing: 0.04em;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #ffffff;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav nav a:hover::after {
+  width: 60%;
 }
 
 .nav nav a:hover {
   color: #ffffff;
   background: rgba(255,255,255,0.1);
+  transform: translateY(-2px);
 }
 
 .nav nav a.active {
@@ -134,7 +165,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 160px 20px 60px; /* Más padding superior por la nav ancha */
+  padding: 160px 20px 60px;
   box-sizing: border-box;
   gap: 40px;
 }
@@ -301,7 +332,7 @@ body {
   border-radius: 24px;
   text-decoration: none;
   color: #ffffff;
-  transition: all 0.35s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   text-align: center;
   font-family: 'Space Grotesk', sans-serif;
   font-size: 1.1rem;
@@ -317,8 +348,8 @@ body {
 .card:hover {
   background: rgba(255, 255, 255, 0.1);
   border-color: rgba(255,255,255,0.6);
-  transform: translateY(-6px) scale(1.04);
-  box-shadow: 0 15px 50px rgba(0,0,0,0.9), 0 0 40px rgba(255,255,255,0.2);
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.9), 0 0 40px rgba(255,255,255,0.2);
 }
 
 /* ===== PÁGINAS INTERNAS ===== */
@@ -368,6 +399,11 @@ body {
   border-radius: 30px;
   padding: 48px 56px;
   box-shadow: 0 15px 50px rgba(0,0,0,0.9), 0 0 30px rgba(255,255,255,0.08);
+  transition: transform 0.3s ease;
+}
+
+.glass-block:hover {
+  transform: scale(1.01);
 }
 
 .glass-block h3 {
@@ -392,7 +428,7 @@ body {
   background: rgba(255,255,255,0.04);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
-  border: 1px dashed rgba(255,255,255,0.35);
+  border: 1px solid rgba(255,255,255,0.2);
   border-radius: 30px;
   display: flex;
   align-items: center;
@@ -404,11 +440,16 @@ body {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   min-height: 320px;
-  transition: 0.3s;
+  transition: all 0.4s ease;
   box-shadow: 0 0 20px rgba(255,255,255,0.05);
 }
 
-.media-placeholder:hover { border-color: rgba(255,255,255,0.7); }
+.media-placeholder:hover { 
+  border-color: rgba(255,255,255,0.7);
+  background: rgba(255,255,255,0.08);
+  transform: scale(1.02);
+}
+
 .media-placeholder svg { opacity: 0.7; color: #ffffff; }
 
 /* Zona vídeo */
@@ -416,7 +457,7 @@ body {
   background: rgba(255,255,255,0.04);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
-  border: 1px dashed rgba(255,255,255,0.35);
+  border: 1px solid rgba(255,255,255,0.2);
   border-radius: 30px;
   display: flex;
   align-items: center;
@@ -428,11 +469,15 @@ body {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   min-height: 380px;
-  transition: 0.3s;
+  transition: all 0.4s ease;
   box-shadow: 0 0 20px rgba(255,255,255,0.05);
 }
 
-.video-placeholder:hover { border-color: rgba(255,255,255,0.7); }
+.video-placeholder:hover { 
+  border-color: rgba(255,255,255,0.7);
+  background: rgba(255,255,255,0.08);
+  transform: scale(1.02);
+}
 
 /* Grid de dos columnas para media */
 .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
@@ -462,7 +507,7 @@ body {
 
 /* ===== RESPONSIVE MÓVIL ===== */
 @media (max-width: 768px) {
-  .nav { padding: 0 20px; height: 80px; } /* Más ancha también en móvil */
+  .nav { padding: 0 20px; height: 80px; }
   .nav h1 { font-size: 1.15rem; }
   .nav-logo { width: 36px; height: 36px; }
   .nav-toggle { display: flex; }

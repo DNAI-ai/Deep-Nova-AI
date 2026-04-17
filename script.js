@@ -1,3 +1,15 @@
+// ===== INICIALIZAR AOS (Animate On Scroll) =====
+document.addEventListener('DOMContentLoaded', function() {
+  if (typeof AOS !== 'undefined') {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100,
+      easing: 'ease-out-cubic'
+    });
+  }
+});
+
 // ===== PARTÍCULAS — Mar de partículas ondulantes con TAMAÑO REDUCIDO Y BRILLO SUTIL =====
 (function () {
   const canvas = document.createElement('canvas');
@@ -27,7 +39,6 @@
     
     for (let i = 0; i < ROWS; i++) {
       for (let j = 0; j < COLS; j++) {
-        // Tamaño reducido: tope más bajo para evitar partículas muy grandes
         const baseSize = isMobile ? 0.5 : 0.8;
         const sizeVar = Math.random() * (isMobile ? 0.4 : 0.7);
         
@@ -46,7 +57,6 @@
 
   let t = 0;
   function draw() {
-    // Fondo negro con estela mínima
     ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
     ctx.fillRect(0, 0, W, H);
 
@@ -59,11 +69,9 @@
       const currentX = p.baseX + waveX;
       const currentY = p.baseY + waveY;
 
-      // Brillo y luminosidad reducidos para un efecto más fino
       const brightness = Math.sin(t * 1.2 + p.phase) * 0.5 + 0.5;
       const alpha = 0.08 + brightness * 0.35; 
 
-      // Resplandor (glow) muy tenue y pequeño
       if (brightness > 0.8) {
         const glowSize = p.size * (isMobile ? 3 : 4);
         const gradient = ctx.createRadialGradient(currentX, currentY, 0, currentX, currentY, glowSize);
@@ -144,6 +152,39 @@ document.addEventListener('DOMContentLoaded', function () {
       const btn = document.querySelector('.nav-toggle');
       if (nav) nav.classList.remove('open');
       if (btn) btn.classList.remove('active');
+    });
+  });
+});
+
+// ===== MICRO-INTERACCIONES: SONIDO SUTIL (Sintetizado) =====
+// Creamos un contexto de audio para generar sonidos tecnológicos sutiles sin archivos externos
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+function playTick() {
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+  
+  osc.type = 'sine';
+  osc.frequency.setValueAtTime(880, audioCtx.currentTime);
+  osc.frequency.exponentialRampToValueAtTime(110, audioCtx.currentTime + 0.1);
+  
+  gain.gain.setValueAtTime(0.02, audioCtx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.1);
+  
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+  
+  osc.start();
+  osc.stop(audioCtx.currentTime + 0.1);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const interactiveElements = document.querySelectorAll('.card, .nav nav a, .nav-brand, .dot');
+  interactiveElements.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      // Solo suena si el usuario ha interactuado con la página antes (política de navegadores)
+      playTick();
     });
   });
 });
