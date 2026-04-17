@@ -26,10 +26,10 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 0 60px;
-  height: 110px; /* Mucho más ancha (una pulgada aprox más) */
-  background: rgba(0, 0, 0, 0.65); /* Transparencia para ver el brillo */
-  backdrop-filter: blur(25px) saturate(180%);
-  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  height: 110px; /* Barra ancha */
+  background: rgba(0, 0, 0, 0.55); /* Más transparente para ver el brillo */
+  backdrop-filter: blur(30px) saturate(180%);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: 0 8px 32px rgba(0,0,0,0.8), 0 0 25px rgba(255,255,255,0.08);
   box-sizing: border-box;
@@ -59,7 +59,7 @@ body {
 .nav h1 {
   margin: 0;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.55rem; /* Un poco más grande */
+  font-size: 1.55rem;
   letter-spacing: 0.08em;
   font-weight: 700;
   color: #ffffff !important;
@@ -134,7 +134,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 160px 20px 60px; /* Más padding superior por la nav ancha */
+  padding: 160px 20px 60px;
   box-sizing: border-box;
   gap: 40px;
 }
@@ -142,9 +142,9 @@ body {
 .hero-text {
   text-align: center;
   margin-bottom: 8px;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(0, 0, 0, 0.45); /* Más transparente para ver el brillo */
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
   padding: 30px 40px;
   border-radius: 30px;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -182,9 +182,9 @@ body {
   overflow: hidden;
   border-radius: 30px;
   border: 1px solid rgba(255,255,255,0.25);
-  background: rgba(0,0,0,0.5);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
+  background: rgba(0,0,0,0.45); /* Más transparente para ver el brillo */
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
   box-shadow: 0 20px 60px rgba(0,0,0,0.95), 0 0 40px rgba(255,255,255,0.05);
 }
 
@@ -213,8 +213,8 @@ body {
   gap: 12px;
   border: 1px solid rgba(255,255,255,0.2);
   background: rgba(255,255,255,0.04);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   box-shadow: 0 0 20px rgba(255,255,255,0.05);
 }
 
@@ -294,9 +294,9 @@ body {
 
 .card {
   padding: 36px 44px;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(0, 0, 0, 0.45); /* Más transparente para ver el brillo */
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
   border: 1px solid rgba(255,255,255,0.25);
   border-radius: 24px;
   text-decoration: none;
@@ -341,7 +341,7 @@ body {
   margin: 0 0 10px;
   letter-spacing: -0.02em;
   line-height: 1.1;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.55);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   padding: 15px 30px;
@@ -361,9 +361,9 @@ body {
 
 /* Bloque de texto — cristal con resplandor */
 .glass-block {
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
+  background: rgba(0,0,0,0.5); /* Más transparente para ver el brillo */
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
   border: 1px solid rgba(255,255,255,0.25);
   border-radius: 30px;
   padding: 48px 56px;
@@ -462,7 +462,7 @@ body {
 
 /* ===== RESPONSIVE MÓVIL ===== */
 @media (max-width: 768px) {
-  .nav { padding: 0 20px; height: 80px; } /* Más ancha también en móvil */
+  .nav { padding: 0 20px; height: 80px; }
   .nav h1 { font-size: 1.15rem; }
   .nav-logo { width: 36px; height: 36px; }
   .nav-toggle { display: flex; }
