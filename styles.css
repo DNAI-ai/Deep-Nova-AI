@@ -27,10 +27,10 @@ body {
   align-items: center;
   padding: 0 60px;
   height: 72px;
-  background: rgba(0, 0, 0, 0.8); /* Más opaco para legibilidad */
-  backdrop-filter: blur(30px) saturate(150%); /* Blur más intenso */
-  -webkit-backdrop-filter: blur(30px) saturate(150%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.65); /* Un poco más transparente para ver el brillo */
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: 0 8px 32px rgba(0,0,0,0.8);
   box-sizing: border-box;
   z-index: 100;
@@ -46,13 +46,13 @@ body {
 }
 
 .nav-brand:hover .nav-logo {
-  filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
+  filter: drop-shadow(0 0 12px rgba(255,255,255,0.6));
   transform: scale(1.05);
 }
 
 .nav-logo {
   flex-shrink: 0;
-  filter: drop-shadow(0 0 5px rgba(255,255,255,0.2));
+  filter: drop-shadow(0 0 5px rgba(255,255,255,0.3));
   transition: filter 0.3s ease, transform 0.4s ease;
 }
 
@@ -142,12 +142,12 @@ body {
 .hero-text {
   text-align: center;
   margin-bottom: 8px;
-  background: rgba(0, 0, 0, 0.6); /* Más opaco */
-  backdrop-filter: blur(35px); /* Blur muy intenso */
-  -webkit-backdrop-filter: blur(35px);
+  background: rgba(0, 0, 0, 0.5); /* Más transparente para el brillo */
+  backdrop-filter: blur(20px); /* Blur equilibrado */
+  -webkit-backdrop-filter: blur(20px);
   padding: 30px 40px;
   border-radius: 30px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: 0 10px 40px rgba(0,0,0,0.8);
 }
 
@@ -159,6 +159,7 @@ body {
   margin: 0;
   letter-spacing: -0.01em;
   line-height: 1.1;
+  text-shadow: 0 0 20px rgba(255,255,255,0.1);
 }
 
 .hero p {
@@ -172,7 +173,7 @@ body {
 /* ===== CARRUSEL — GIGANTE en escritorio ===== */
 .carousel {
   position: relative;
-  width: min(1600px, 98vw); /* Aún más ancho */
+  width: min(1600px, 98vw);
   margin: 0 auto;
 }
 
@@ -181,15 +182,15 @@ body {
   overflow: hidden;
   border-radius: 30px;
   border: 1px solid rgba(255,255,255,0.2);
-  background: rgba(0,0,0,0.7); /* Más oscuro */
-  backdrop-filter: blur(40px); /* Blur extremo */
-  -webkit-backdrop-filter: blur(40px);
+  background: rgba(0,0,0,0.55); /* Más transparente para ver el brillo */
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
   box-shadow: 0 20px 60px rgba(0,0,0,0.95);
 }
 
 .carousel-slide {
   min-width: 100%;
-  height: 620px; /* Aún más alto */
+  height: 620px;
   display: flex;
   align-items: center;
   border-radius: 30px;
@@ -202,7 +203,7 @@ body {
 .slide-layout-left  { flex-direction: row-reverse; }
 
 .slide-image {
-  flex: 0 0 68%; /* Ocupa más espacio */
+  flex: 0 0 68%;
   height: 500px;
   border-radius: 24px;
   display: flex;
@@ -211,9 +212,9 @@ body {
   flex-direction: column;
   gap: 12px;
   border: 1px solid rgba(255,255,255,0.15);
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .slide-image svg { opacity: 0.5; color: #ffffff; }
@@ -292,9 +293,9 @@ body {
 
 .card {
   padding: 36px 44px;
-  background: rgba(0, 0, 0, 0.75); /* Más opaco */
-  backdrop-filter: blur(35px); /* Blur muy intenso */
-  -webkit-backdrop-filter: blur(35px);
+  background: rgba(0, 0, 0, 0.55); /* Más transparente para ver el brillo */
+  backdrop-filter: blur(20px); /* Blur equilibrado */
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255,255,255,0.2);
   border-radius: 24px;
   text-decoration: none;
@@ -313,9 +314,10 @@ body {
 }
 
 .card:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
   border-color: rgba(255,255,255,0.5);
   transform: translateY(-6px) scale(1.04);
+  box-shadow: 0 15px 50px rgba(255,255,255,0.1);
 }
 
 /* ===== PÁGINAS INTERNAS ===== */
@@ -338,12 +340,12 @@ body {
   margin: 0 0 10px;
   letter-spacing: -0.02em;
   line-height: 1.1;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(30px);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   padding: 15px 30px;
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   display: inline-block;
 }
 
@@ -357,9 +359,9 @@ body {
 
 /* Bloque de texto — cristal */
 .glass-block {
-  background: rgba(0,0,0,0.8); /* Muy opaco */
-  backdrop-filter: blur(40px); /* Blur extremo */
-  -webkit-backdrop-filter: blur(40px);
+  background: rgba(0,0,0,0.65); /* Más transparente para ver el brillo */
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
   border: 1px solid rgba(255,255,255,0.2);
   border-radius: 30px;
   padding: 48px 56px;
@@ -385,9 +387,9 @@ body {
 
 /* Zona imagen/foto */
 .media-placeholder {
-  background: rgba(255,255,255,0.04);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   border: 1px dashed rgba(255,255,255,0.3);
   border-radius: 30px;
   display: flex;
@@ -408,9 +410,9 @@ body {
 
 /* Zona vídeo */
 .video-placeholder {
-  background: rgba(255,255,255,0.04);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   border: 1px dashed rgba(255,255,255,0.3);
   border-radius: 30px;
   display: flex;
@@ -470,8 +472,8 @@ body {
     gap: 4px;
     padding: 12px 16px 16px;
     background: rgba(0, 0, 0, 0.98);
-    backdrop-filter: blur(35px);
-    -webkit-backdrop-filter: blur(35px);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
     border-bottom: 1px solid rgba(255,255,255,0.2);
   }
   .nav nav.open { display: flex; }

@@ -1,4 +1,4 @@
-// ===== PARTÍCULAS — Mar de partículas ondulantes (Efecto Blanco/Negro) =====
+// ===== PARTÍCULAS — Mar de partículas ondulantes con BRILLO POTENCIADO =====
 (function () {
   const canvas = document.createElement('canvas');
   canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;';
@@ -16,15 +16,14 @@
   }
   window.addEventListener('resize', resize);
 
-  // Parámetros para el "mar" de partículas
   let ROWS = 45;
   let COLS = 45;
   let particles = [];
 
   function initParticles() {
     particles = [];
-    ROWS = isMobile ? 30 : 45;
-    COLS = isMobile ? 30 : 45;
+    ROWS = isMobile ? 32 : 48;
+    COLS = isMobile ? 32 : 48;
     
     for (let i = 0; i < ROWS; i++) {
       for (let j = 0; j < COLS; j++) {
@@ -33,46 +32,58 @@
           y: (i / ROWS) * H,
           baseX: (j / COLS) * W,
           baseY: (i / ROWS) * H,
-          size: isMobile ? (Math.random() * 0.8 + 0.3) : (Math.random() * 1.5 + 0.5),
+          size: isMobile ? (Math.random() * 1.2 + 0.4) : (Math.random() * 2.0 + 0.6),
           phase: Math.random() * Math.PI * 2,
-          offset: (i + j) * 0.1
+          offset: (i + j) * 0.12,
+          sparkleSpeed: Math.random() * 0.05 + 0.02
         });
       }
     }
   }
 
-  // t incrementa MUY lento para que el movimiento sea extra pausado
   let t = 0;
   function draw() {
-    // Fondo negro puro con estela mínima
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
+    // Fondo negro con estela mínima para que el brillo destaque
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.12)';
     ctx.fillRect(0, 0, W, H);
 
-    // Velocidad extra reducida (antes 0.012)
-    t += isMobile ? 0.01 : 0.007;
+    t += isMobile ? 0.008 : 0.006;
 
     for (const p of particles) {
-      // Movimiento ondulante tipo mar - Amplitud suave
-      const waveX = Math.sin(t + p.offset) * (isMobile ? 8 : 15);
-      const waveY = Math.cos(t * 0.8 + p.offset) * (isMobile ? 12 : 20);
+      const waveX = Math.sin(t + p.offset) * (isMobile ? 10 : 18);
+      const waveY = Math.cos(t * 0.7 + p.offset) * (isMobile ? 15 : 25);
       
       const currentX = p.baseX + waveX;
       const currentY = p.baseY + waveY;
 
-      // Brillo variable según la onda
-      const brightness = Math.sin(t + p.phase) * 0.5 + 0.5;
-      const alpha = 0.08 + brightness * 0.5;
+      // Brillo variable con mayor intensidad
+      const brightness = Math.sin(t * 1.5 + p.phase) * 0.5 + 0.5;
+      const alpha = 0.15 + brightness * 0.75; // Base de brillo más alta
 
+      // Dibujar resplandor (glow)
+      if (brightness > 0.7) {
+        const glowSize = p.size * (isMobile ? 4 : 6);
+        const gradient = ctx.createRadialGradient(currentX, currentY, 0, currentX, currentY, glowSize);
+        gradient.addColorStop(0, `rgba(255, 255, 255, ${alpha * 0.4})`);
+        gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+        
+        ctx.beginPath();
+        ctx.arc(currentX, currentY, glowSize, 0, Math.PI * 2);
+        ctx.fillStyle = gradient;
+        ctx.fill();
+      }
+
+      // Núcleo de la partícula
       ctx.beginPath();
       ctx.arc(currentX, currentY, p.size, 0, Math.PI * 2);
       ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
       ctx.fill();
 
-      // Destello ocasional suave
-      if (brightness > 0.97) {
+      // Destello extra brillante (sparkle)
+      if (brightness > 0.94) {
         ctx.beginPath();
-        ctx.arc(currentX, currentY, p.size * 1.8, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${alpha * 0.25})`;
+        ctx.arc(currentX, currentY, p.size * 1.5, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${alpha * 0.6})`;
         ctx.fill();
       }
     }
