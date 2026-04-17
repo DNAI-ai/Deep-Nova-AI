@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deep Nova AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body style='padding-top:40px;'>
+
+
+<header class="nav">
+  <div class="nav-brand">
+    <!-- Logo inventado — reemplazar con el tuyo -->
+    <svg class="nav-logo" width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="19" cy="19" r="18" stroke="url(#lg1)" stroke-width="1.5"/>
+      <circle cx="19" cy="19" r="10" stroke="url(#lg2)" stroke-width="1"/>
+      <circle cx="19" cy="19" r="3.5" fill="url(#lg1)"/>
+      <line x1="19" y1="1" x2="19" y2="10" stroke="url(#lg1)" stroke-width="1.2"/>
+      <line x1="19" y1="28" x2="19" y2="37" stroke="url(#lg1)" stroke-width="1.2"/>
+      <line x1="1" y1="19" x2="10" y2="19" stroke="url(#lg2)" stroke-width="1.2"/>
+      <line x1="28" y1="19" x2="37" y2="19" stroke="url(#lg2)" stroke-width="1.2"/>
+      <line x1="6" y1="6" x2="13" y2="13" stroke="url(#lg1)" stroke-width="1"/>
+      <line x1="25" y1="25" x2="32" y2="32" stroke="url(#lg2)" stroke-width="1"/>
+      <defs>
+        <linearGradient id="lg1" x1="0" y1="0" x2="38" y2="38" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#7dd3fc"/>
+          <stop offset="1" stop-color="#a78bfa"/>
+        </linearGradient>
+        <linearGradient id="lg2" x1="38" y1="0" x2="0" y2="38" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#a78bfa"/>
+          <stop offset="1" stop-color="#fbcfe8"/>
+        </linearGradient>
+      </defs>
+    </svg>
+    <h1>Deep Nova AI</h1>
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="privacy.html">Privacy</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <h2>Artificial Intelligence Studio</h2>
+    <p>We build next-generation AI systems &amp; digital experiences</p>
+  </div>
+
+  <!-- Carrusel -->
+  <div class="carousel">
+    <div class="carousel-track">
+      <!-- Slide 1: imagen izquierda, texto derecha -->
+      <div class="carousel-slide slide-layout-right">
+        <div class="slide-image placeholder-slide">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span class="carousel-label">Imagen 1</span>
+        </div>
+        <div class="slide-text">
+          <h3>Avatares Inteligentes</h3>
+          <p>Creamos avatares con IA capaces de interactuar en tiempo real con tus clientes, ofreciendo una experiencia única y personalizada para tu marca.</p>
+        </div>
+      </div>
+      <!-- Slide 2: texto izquierda, imagen derecha -->
+      <div class="carousel-slide slide-layout-left">
+        <div class="slide-text">
+          <h3>Fotografía & Vídeo IA</h3>
+          <p>Generamos imágenes y vídeos de producto de alta calidad con inteligencia artificial, reduciendo costes y tiempos de producción de forma drástica.</p>
+        </div>
+        <div class="slide-image placeholder-slide">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span class="carousel-label">Imagen 2</span>
+        </div>
+      </div>
+      <!-- Slide 3: imagen izquierda, texto derecha -->
+      <div class="carousel-slide slide-layout-right">
+        <div class="slide-image placeholder-slide">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span class="carousel-label">Imagen 3</span>
+        </div>
+        <div class="slide-text">
+          <h3>Soluciones a Medida</h3>
+          <p>Desarrollamos sistemas de IA completamente personalizados para tu negocio, desde automatización de procesos hasta modelos de predicción avanzados.</p>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-dots">
+      <span class="dot active" onclick="goToSlide(0)"></span>
+      <span class="dot" onclick="goToSlide(1)"></span>
+      <span class="dot" onclick="goToSlide(2)"></span>
+    </div>
+  </div>
+
+  <!-- Botones -->
+  <div class="grid">
+    <a class="card" href="chatbots.html">Avatares</a>
+    <a class="card" href="data.html">Fotografía IA &amp; Vídeo de Producto</a>
+    <a class="card" href="neural.html">Creación Personalizada</a>
+  </div>
+</section>
+
+
+
+
+
+
+<div class="footer">
+contact@deepnova-ai.com · soporte@deepnova-ai.com<br>
+© 2026 Deep Nova AI
+</div>
+
+</body>
+</html>
