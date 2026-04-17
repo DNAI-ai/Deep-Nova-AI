@@ -1,4 +1,4 @@
-// ===== PARTÍCULAS — Mar de partículas ondulantes con BRILLO SUTIL =====
+// ===== PARTÍCULAS — Mar de partículas ondulantes con TAMAÑO REDUCIDO Y BRILLO SUTIL =====
 (function () {
   const canvas = document.createElement('canvas');
   canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;';
@@ -22,13 +22,14 @@
 
   function initParticles() {
     particles = [];
-    ROWS = isMobile ? 32 : 40;
-    COLS = isMobile ? 32 : 40;
+    ROWS = isMobile ? 32 : 42;
+    COLS = isMobile ? 32 : 42;
     
     for (let i = 0; i < ROWS; i++) {
       for (let j = 0; j < COLS; j++) {
-        const baseSize = isMobile ? 0.7 : 1.6;
-        const sizeVar = Math.random() * (isMobile ? 0.5 : 1.0);
+        // Tamaño reducido: tope más bajo para evitar partículas muy grandes
+        const baseSize = isMobile ? 0.5 : 0.8;
+        const sizeVar = Math.random() * (isMobile ? 0.4 : 0.7);
         
         particles.push({
           x: (j / COLS) * W,
@@ -45,6 +46,7 @@
 
   let t = 0;
   function draw() {
+    // Fondo negro con estela mínima
     ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
     ctx.fillRect(0, 0, W, H);
 
@@ -57,15 +59,15 @@
       const currentX = p.baseX + waveX;
       const currentY = p.baseY + waveY;
 
-      // Brillo reducido (antes alpha base 0.2 + 0.75)
+      // Brillo y luminosidad reducidos para un efecto más fino
       const brightness = Math.sin(t * 1.2 + p.phase) * 0.5 + 0.5;
-      const alpha = 0.12 + brightness * 0.45; 
+      const alpha = 0.08 + brightness * 0.35; 
 
-      // Resplandor (glow) más tenue
-      if (brightness > 0.75) {
-        const glowSize = p.size * (isMobile ? 4 : 6);
+      // Resplandor (glow) muy tenue y pequeño
+      if (brightness > 0.8) {
+        const glowSize = p.size * (isMobile ? 3 : 4);
         const gradient = ctx.createRadialGradient(currentX, currentY, 0, currentX, currentY, glowSize);
-        gradient.addColorStop(0, `rgba(255, 255, 255, ${alpha * 0.25})`);
+        gradient.addColorStop(0, `rgba(255, 255, 255, ${alpha * 0.2})`);
         gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
         
         ctx.beginPath();
