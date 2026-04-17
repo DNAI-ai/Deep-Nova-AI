@@ -1,4 +1,4 @@
-// ===== PARTÍCULAS — Mar de partículas ondulantes con BRILLO MEJORADO =====
+// ===== PARTÍCULAS — Mar de partículas ondulantes con BRILLO VISIBLE =====
 (function () {
   const canvas = document.createElement('canvas');
   canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;';
@@ -27,7 +27,6 @@
     
     for (let i = 0; i < ROWS; i++) {
       for (let j = 0; j < COLS; j++) {
-        // Tamaño sutil pero visible
         const baseSize = isMobile ? 0.6 : 1.0;
         const sizeVar = Math.random() * (isMobile ? 0.5 : 0.8);
         
@@ -46,7 +45,6 @@
 
   let t = 0;
   function draw() {
-    // Fondo negro con estela mínima
     ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
     ctx.fillRect(0, 0, W, H);
 
@@ -59,15 +57,14 @@
       const currentX = p.baseX + waveX;
       const currentY = p.baseY + waveY;
 
-      // Brillo algo más visible (antes alpha base 0.08 + 0.35)
+      // Brillo optimizado para verse a través del blur (alpha base 0.18 + 0.55)
       const brightness = Math.sin(t * 1.2 + p.phase) * 0.5 + 0.5;
-      const alpha = 0.15 + brightness * 0.45; 
+      const alpha = 0.18 + brightness * 0.55; 
 
-      // Resplandor (glow) sutil pero presente
-      if (brightness > 0.75) {
+      if (brightness > 0.7) {
         const glowSize = p.size * (isMobile ? 3 : 5);
         const gradient = ctx.createRadialGradient(currentX, currentY, 0, currentX, currentY, glowSize);
-        gradient.addColorStop(0, `rgba(255, 255, 255, ${alpha * 0.25})`);
+        gradient.addColorStop(0, `rgba(255, 255, 255, ${alpha * 0.3})`);
         gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
         
         ctx.beginPath();

@@ -26,10 +26,10 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 0 60px;
-  height: 110px; /* Barra ancha */
-  background: rgba(0, 0, 0, 0.55); /* Más transparente para ver el brillo */
-  backdrop-filter: blur(30px) saturate(180%);
-  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  height: 110px;
+  background: rgba(0, 0, 0, 0.4); /* Muy transparente para ver el brillo */
+  backdrop-filter: blur(35px) saturate(180%); /* Blur muy notable */
+  -webkit-backdrop-filter: blur(35px) saturate(180%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: 0 8px 32px rgba(0,0,0,0.8), 0 0 25px rgba(255,255,255,0.08);
   box-sizing: border-box;
@@ -142,9 +142,9 @@ body {
 .hero-text {
   text-align: center;
   margin-bottom: 8px;
-  background: rgba(0, 0, 0, 0.45); /* Más transparente para ver el brillo */
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
+  background: rgba(0, 0, 0, 0.35); /* Muy transparente para ver el brillo */
+  backdrop-filter: blur(30px); /* Blur muy notable */
+  -webkit-backdrop-filter: blur(30px);
   padding: 30px 40px;
   border-radius: 30px;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -182,9 +182,9 @@ body {
   overflow: hidden;
   border-radius: 30px;
   border: 1px solid rgba(255,255,255,0.25);
-  background: rgba(0,0,0,0.45); /* Más transparente para ver el brillo */
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(30px);
+  background: rgba(0,0,0,0.35); /* Muy transparente para ver el brillo */
+  backdrop-filter: blur(35px); /* Blur muy notable */
+  -webkit-backdrop-filter: blur(35px);
   box-shadow: 0 20px 60px rgba(0,0,0,0.95), 0 0 40px rgba(255,255,255,0.05);
 }
 
@@ -294,9 +294,9 @@ body {
 
 .card {
   padding: 36px 44px;
-  background: rgba(0, 0, 0, 0.45); /* Más transparente para ver el brillo */
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
+  background: rgba(0, 0, 0, 0.35); /* Muy transparente para ver el brillo */
+  backdrop-filter: blur(30px); /* Blur muy notable */
+  -webkit-backdrop-filter: blur(30px);
   border: 1px solid rgba(255,255,255,0.25);
   border-radius: 24px;
   text-decoration: none;
@@ -321,16 +321,16 @@ body {
   box-shadow: 0 15px 50px rgba(0,0,0,0.9), 0 0 40px rgba(255,255,255,0.2);
 }
 
-/* ===== PÁGINAS INTERNAS ===== */
+/* ===== PÁGINAS INTERNAS — DISTRIBUCIÓN HORIZONTAL OPTIMIZADA ===== */
 .content-page { padding-top: 140px; min-height: 100vh; }
 
 .content-section {
-  max-width: 1100px;
+  max-width: 1600px; /* Mucho más ancho para aprovechar el espacio horizontal */
   margin: 0 auto;
   padding: 60px 40px;
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 60px;
 }
 
 .section-title {
@@ -341,9 +341,9 @@ body {
   margin: 0 0 10px;
   letter-spacing: -0.02em;
   line-height: 1.1;
-  background: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
   padding: 15px 30px;
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -361,13 +361,15 @@ body {
 
 /* Bloque de texto — cristal con resplandor */
 .glass-block {
-  background: rgba(0,0,0,0.5); /* Más transparente para ver el brillo */
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(30px);
+  background: rgba(0,0,0,0.35); /* Muy transparente para ver el brillo */
+  backdrop-filter: blur(35px); /* Blur muy notable */
+  -webkit-backdrop-filter: blur(35px);
   border: 1px solid rgba(255,255,255,0.25);
   border-radius: 30px;
   padding: 48px 56px;
   box-shadow: 0 15px 50px rgba(0,0,0,0.9), 0 0 30px rgba(255,255,255,0.08);
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .glass-block h3 {
@@ -403,7 +405,7 @@ body {
   font-size: 0.9rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  min-height: 320px;
+  min-height: 450px; /* Más alto para aprovechar el espacio horizontal */
   transition: 0.3s;
   box-shadow: 0 0 20px rgba(255,255,255,0.05);
 }
@@ -427,15 +429,25 @@ body {
   font-size: 0.9rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  min-height: 380px;
+  min-height: 450px;
   transition: 0.3s;
   box-shadow: 0 0 20px rgba(255,255,255,0.05);
 }
 
 .video-placeholder:hover { border-color: rgba(255,255,255,0.7); }
 
-/* Grid de dos columnas para media */
-.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+/* Grid de dos columnas para media — OPTIMIZADO HORIZONTALMENTE */
+.two-col { 
+  display: grid; 
+  grid-template-columns: 1.2fr 0.8fr; /* Distribución asimétrica más dinámica */
+  gap: 40px; 
+  align-items: stretch;
+}
+
+/* Alternar orden para dinamismo visual */
+.two-col:nth-child(even) {
+  grid-template-columns: 0.8fr 1.2fr;
+}
 
 /* ===== FOOTER ===== */
 .footer {
@@ -491,8 +503,9 @@ body {
   .carousel-track { border-radius: 24px; box-shadow: 0 15px 40px rgba(0,0,0,0.9), 0 0 20px rgba(255,255,255,0.05); }
   .carousel-slide { height: auto; min-height: 220px; flex-direction: column !important; padding: 24px 20px; gap: 20px; border-radius: 24px; }
   .slide-image { flex: 0 0 auto; width: 100%; height: 180px; border-radius: 16px; }
-  .two-col { grid-template-columns: 1fr; }
+  .two-col, .two-col:nth-child(even) { grid-template-columns: 1fr; }
   .content-section { padding: 36px 16px; }
   .glass-block { padding: 32px 24px; border-radius: 24px; }
   .content-page { padding-top: 110px; }
+  .media-placeholder, .video-placeholder { min-height: 300px; }
 }
