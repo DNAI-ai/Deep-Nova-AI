@@ -129,18 +129,18 @@ document.addEventListener('DOMContentLoaded', function () {
     const navMenu = document.getElementById('navMenu');
 
     if (navToggle && navMenu) {
-        navToggle.addEventListener('click', function() {
+        navToggle.onclick = function() {
             navToggle.classList.toggle('active');
             navMenu.classList.toggle('open');
-        });
+        };
 
         // Cerrar menú al hacer clic en un enlace
         const links = navMenu.querySelectorAll('a');
         links.forEach(function(link) {
-            link.addEventListener('click', function() {
+            link.onclick = function() {
                 navToggle.classList.remove('active');
                 navMenu.classList.remove('open');
-            });
+            };
         });
     }
 });

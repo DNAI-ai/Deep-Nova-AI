@@ -28,17 +28,17 @@
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
-  font-family: 'JetBrains Mono', monospace; /* Fuente para texto */
+  font-family: 'JetBrains Mono', monospace;
   background: #000000;
   color: #ffffff;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 1.1rem; /* Aumentado el tamaño base */
+  font-size: 1.1rem;
 }
 
 h1, h2, h3, h4, h5, h6, .nav-brand h1, .section-title {
-  font-family: 'Space Mono', monospace; /* Fuente para títulos */
+  font-family: 'Space Mono', monospace;
 }
 
 /* ===== PARTÍCULAS ===== */
@@ -74,10 +74,10 @@ h1, h2, h3, h4, h5, h6, .nav-brand h1, .section-title {
 }
 
 .nav-logo {
-  width: 65px; /* Más grande */
+  width: 65px;
   height: 65px;
   object-fit: contain;
-  filter: brightness(0) invert(1) drop-shadow(0 0 12px rgba(255,255,255,0.5)); /* Blanco puro y resplandor */
+  filter: brightness(0) invert(1) drop-shadow(0 0 12px rgba(255,255,255,0.5));
   transition: filter 0.3s ease, transform 0.4s ease;
 }
 
@@ -88,7 +88,7 @@ h1, h2, h3, h4, h5, h6, .nav-brand h1, .section-title {
 
 .nav h1 {
   margin: 0;
-  font-size: 1.7rem; /* Aumentado */
+  font-size: 1.7rem;
   letter-spacing: 0.05em;
   font-weight: 700;
 }
@@ -105,7 +105,7 @@ h1, h2, h3, h4, h5, h6, .nav-brand h1, .section-title {
   border-radius: 12px;
   text-decoration: none;
   transition: all 0.25s ease;
-  font-size: 1.05rem; /* Aumentado */
+  font-size: 1.05rem;
   font-weight: 500;
 }
 
@@ -120,16 +120,36 @@ h1, h2, h3, h4, h5, h6, .nav-brand h1, .section-title {
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* ===== HERO ===== */
+/* Hamburger menu móvil */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 101;
+  background: none;
+  border: none;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 25px;
+  height: 2px;
+  background: #ffffff;
+  transition: 0.3s;
+}
+
+/* ===== HERO — MÁS CORTO Y VISUAL ===== */
 .hero {
-  min-height: 100vh;
+  min-height: 80vh; /* Reducido de 100vh */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 160px 20px 60px;
+  padding: 140px 20px 40px;
   box-sizing: border-box;
-  gap: 40px;
+  gap: 30px;
 }
 
 .hero-text {
@@ -140,7 +160,7 @@ h1, h2, h3, h4, h5, h6, .nav-brand h1, .section-title {
 }
 
 .hero h2 {
-  font-size: clamp(3rem, 7vw, 5.5rem); /* Aumentado */
+  font-size: clamp(2.5rem, 6vw, 4.5rem); /* Reducido */
   font-weight: 700;
   margin: 0;
   letter-spacing: -0.02em;
@@ -161,8 +181,8 @@ h1, h2, h3, h4, h5, h6, .nav-brand h1, .section-title {
 
 .hero p {
   opacity: 0.8;
-  font-size: 1.4rem; /* Aumentado */
-  margin: 25px 0 0;
+  font-size: 1.2rem; /* Reducido */
+  margin: 20px 0 0;
   font-weight: 400;
   letter-spacing: 0.03em;
 }
@@ -220,7 +240,7 @@ h1, h2, h3, h4, h5, h6, .nav-brand h1, .section-title {
 
 .slide-text h3 {
   margin: 0;
-  font-size: clamp(1.8rem, 3.5vw, 2.6rem); /* Aumentado */
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
   font-weight: 700;
   line-height: 1.2;
 }
@@ -228,7 +248,7 @@ h1, h2, h3, h4, h5, h6, .nav-brand h1, .section-title {
 .slide-text p {
   margin: 0;
   opacity: 0.9;
-  font-size: 1.2rem; /* Aumentado */
+  font-size: 1.2rem;
   line-height: 1.8;
 }
 
@@ -254,12 +274,12 @@ h1, h2, h3, h4, h5, h6, .nav-brand h1, .section-title {
   box-shadow: 0 0 12px rgba(255,255,255,0.7);
 }
 
-/* ===== GRID BOTONES — TEXTO MÁS GRANDE ===== */
+/* ===== GRID BOTONES ===== */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
-  padding: 20px 60px 40px;
+  padding: 40px 60px;
   max-width: 1300px;
   margin: 0 auto;
   width: 100%;
@@ -277,7 +297,7 @@ h1, h2, h3, h4, h5, h6, .nav-brand h1, .section-title {
   color: #ffffff;
   transition: all 0.35s ease;
   text-align: center;
-  font-size: 1.3rem; /* Aumentado significativamente */
+  font-size: 1.3rem;
   font-weight: 700;
   letter-spacing: 0.05em;
   box-shadow: 0 12px 40px rgba(0,0,0,0.8), 0 0 25px rgba(255,255,255,0.12);
@@ -307,7 +327,7 @@ h1, h2, h3, h4, h5, h6, .nav-brand h1, .section-title {
 }
 
 .section-title.large-title {
-  font-size: clamp(3.8rem, 9vw, 6rem); /* Aumentado */
+  font-size: clamp(3.8rem, 9vw, 6rem);
   font-weight: 700;
   margin: 0 0 20px;
   background: rgba(255, 255, 255, 0.04);
@@ -332,7 +352,7 @@ h1, h2, h3, h4, h5, h6, .nav-brand h1, .section-title {
 
 .glass-block h3 {
   margin: 0 0 25px;
-  font-size: 1.8rem; /* Aumentado */
+  font-size: 1.8rem;
   font-weight: 700;
 }
 
@@ -340,13 +360,13 @@ h1, h2, h3, h4, h5, h6, .nav-brand h1, .section-title {
   margin: 0;
   opacity: 0.9;
   line-height: 1.9;
-  font-size: 1.25rem; /* Aumentado */
+  font-size: 1.25rem;
 }
 
 /* ===== FOOTER ===== */
 .footer {
   text-align: center;
-  font-size: 1rem; /* Aumentado */
+  font-size: 1rem;
   opacity: 0.8;
   margin: 100px 0 50px;
   letter-spacing: 0.05em;
@@ -354,31 +374,16 @@ h1, h2, h3, h4, h5, h6, .nav-brand h1, .section-title {
   line-height: 1.8;
 }
 
-/* ===== RESPONSIVE ===== */
+/* ===== RESPONSIVE MÓVIL OPTIMIZADO ===== */
 @media (max-width: 768px) {
   .nav { padding: 0 20px; height: 80px; }
-  .nav h1 { font-size: 1.3rem; }
-  .nav-logo { width: 38px; height: 38px; }
+  .nav h1 { font-size: 1.1rem; } /* Reducido para que quepa el logo */
+  .nav-logo { width: 45px; height: 45px; } /* Logo más pequeño en móvil */
   
   .nav-toggle {
     display: flex;
-    flex-direction: column;
-    gap: 6px;
-    cursor: pointer;
-    padding: 10px;
-    z-index: 101;
-    background: none;
-    border: none;
   }
   
-  .nav-toggle span {
-    display: block;
-    width: 25px;
-    height: 2px;
-    background: #ffffff;
-    transition: 0.3s;
-  }
-
   .nav-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
   .nav-toggle.active span:nth-child(2) { opacity: 0; }
   .nav-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
@@ -389,8 +394,8 @@ h1, h2, h3, h4, h5, h6, .nav-brand h1, .section-title {
     top: 80px;
     left: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.95);
-    backdrop-filter: blur(20px);
+    background: rgba(0, 0, 0, 0.98);
+    backdrop-filter: blur(30px);
     flex-direction: column;
     padding: 20px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -404,10 +409,23 @@ h1, h2, h3, h4, h5, h6, .nav-brand h1, .section-title {
     padding: 15px 30px;
     width: 100%;
     box-sizing: border-box;
+    font-size: 1.1rem;
   }
 
-  .grid { grid-template-columns: 1fr; padding: 8px 16px 32px; }
-  .card { font-size: 1.15rem; min-height: 80px; }
-  .hero h2 { font-size: clamp(2.5rem, 11vw, 4rem); }
-  .section-title.large-title { font-size: clamp(2.5rem, 9vw, 3.8rem); padding: 18px 30px; }
+  .hero { padding: 120px 16px 40px; min-height: 60vh; }
+  .hero h2 { font-size: clamp(2rem, 9vw, 3rem); }
+  .hero p { font-size: 1rem; margin-top: 15px; }
+
+  .carousel { width: 94vw; }
+  .carousel-slide { height: auto; padding: 30px 20px; flex-direction: column !important; gap: 30px; }
+  .slide-image { flex: 0 0 auto; width: 100%; height: 220px; }
+  .slide-text h3 { font-size: 1.6rem; }
+  .slide-text p { font-size: 1rem; }
+
+  .grid { grid-template-columns: 1fr; padding: 20px 16px; gap: 16px; }
+  .card { font-size: 1.15rem; min-height: 90px; padding: 20px; }
+  
+  .section-title.large-title { font-size: clamp(2.2rem, 9vw, 3.2rem); padding: 15px 25px; }
+  .glass-block { padding: 32px 24px; }
+  .glass-block p { font-size: 1.1rem; }
 }
