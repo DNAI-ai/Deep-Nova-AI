@@ -180,11 +180,20 @@ h1, h2, h3, h4, h5, h6, .nav-brand h1, .section-title {
 }
 
 .hero p {
-  opacity: 0.8;
-  font-size: 1.2rem; /* Reducido */
+  opacity: 1;
+  color: #ffffff;
+  font-size: 1.2rem;
   margin: 20px 0 0;
   font-weight: 400;
   letter-spacing: 0.03em;
+  text-shadow:
+    0 0 8px rgba(0,0,0,0.95),
+    0 0 16px rgba(0,0,0,0.9),
+    0 1px 3px rgba(0,0,0,1),
+    -1px -1px 0 rgba(0,0,0,0.8),
+     1px -1px 0 rgba(0,0,0,0.8),
+    -1px  1px 0 rgba(0,0,0,0.8),
+     1px  1px 0 rgba(0,0,0,0.8);
 }
 
 /* ===== CARRUSEL ===== */
@@ -215,7 +224,7 @@ h1, h2, h3, h4, h5, h6, .nav-brand h1, .section-title {
 .carousel-slide {
   width: calc(100% / 3);
   min-width: calc(100% / 3);
-  height: 780px;
+  height: 860px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -235,7 +244,7 @@ h1, h2, h3, h4, h5, h6, .nav-brand h1, .section-title {
 
 /* Left: media area (image or video) */
 .slide-media {
-  flex: 0 0 55%;
+  flex: 0 0 65%;
   height: 100%;
   border-radius: 20px;
   overflow: hidden;
