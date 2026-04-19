@@ -57,7 +57,6 @@
       const currentX = p.baseX + waveX;
       const currentY = p.baseY + waveY;
 
-      // Brillo optimizado para verse a través del blur (alpha base 0.18 + 0.55)
       const brightness = Math.sin(t * 1.2 + p.phase) * 0.5 + 0.5;
       const alpha = 0.18 + brightness * 0.55; 
 
@@ -125,22 +124,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 // ===== NAV MÓVIL — hamburger toggle =====
-function toggleNav() {
-  const nav = document.getElementById('main-nav');
-  const btn = document.querySelector('.nav-toggle');
-  if (!nav) return;
-  nav.classList.toggle('open');
-  if (btn) btn.classList.toggle('active');
-}
-
 document.addEventListener('DOMContentLoaded', function () {
-  const links = document.querySelectorAll('#main-nav a');
-  links.forEach(function (link) {
-    link.addEventListener('click', function () {
-      const nav = document.getElementById('main-nav');
-      const btn = document.querySelector('.nav-toggle');
-      if (nav) nav.classList.remove('open');
-      if (btn) btn.classList.remove('active');
-    });
-  });
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', function() {
+            navToggle.classList.toggle('active');
+            navMenu.classList.toggle('open');
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        const links = navMenu.querySelectorAll('a');
+        links.forEach(function(link) {
+            link.addEventListener('click', function() {
+                navToggle.classList.remove('active');
+                navMenu.classList.remove('open');
+            });
+        });
+    }
 });
