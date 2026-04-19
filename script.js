@@ -105,10 +105,10 @@ function goToSlide(index) {
 
 function updateCarousel() {
   const track   = document.querySelector('.carousel-track');
-  const wrapper = document.querySelector('.carousel-track-wrapper');
   const dots    = document.querySelectorAll('.dot');
-  if (!track || !wrapper) return;
-  const slideWidth = wrapper.offsetWidth;
+  if (!track) return;
+  const slide = track.querySelector('.carousel-slide');
+  const slideWidth = slide ? slide.offsetWidth : 0;
   track.style.transform  = `translateX(-${currentSlide * slideWidth}px)`;
   track.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
   dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));

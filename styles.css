@@ -223,7 +223,7 @@ h1, h2, h3, h4, h5, h6, .nav-brand h1, .section-title {
   padding: 50px 60px;
   box-sizing: border-box;
   flex-shrink: 0;
-  text-decoration: none;
+  text-decoration: none !important;
   color: #ffffff;
   cursor: pointer;
   transition: background 0.3s ease;
