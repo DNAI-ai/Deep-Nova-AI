@@ -74,10 +74,10 @@ h1, h2, h3, h4, h5, h6, .nav-brand h1, .section-title {
 }
 
 .nav-logo {
-  width: 45px;
-  height: 45px;
+  width: 65px; /* Más grande */
+  height: 65px;
   object-fit: contain;
-  filter: drop-shadow(0 0 8px rgba(255,255,255,0.4));
+  filter: brightness(0) invert(1) drop-shadow(0 0 12px rgba(255,255,255,0.5)); /* Blanco puro y resplandor */
   transition: filter 0.3s ease, transform 0.4s ease;
 }
 
