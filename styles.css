@@ -207,30 +207,52 @@ h1, h2, h3, h4, h5, h6, .nav-brand h1, .section-title {
 
 .carousel-slide {
   min-width: 100%;
-  height: 620px;
+  height: 680px;
   display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center; /* Centrar imagen */
-  border-radius: 30px;
-  padding: 40px; /* Padding uniforme */
+  gap: 48px;
+  padding: 50px 60px;
   box-sizing: border-box;
 }
 
-.slide-image {
-  width: 100%; /* Ocupar todo el ancho */
-  height: 100%; /* Ocupar todo el alto */
-  border-radius: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
+/* Left: media area (image or video) */
+.slide-media {
+  flex: 0 0 55%;
+  height: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
 }
 
+.slide-media img,
+.slide-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  display: block;
+}
+
+/* Placeholder shown until real media is added */
+.slide-media-placeholder {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  border: 1.5px dashed rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.35);
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Right: text area */
 .slide-text {
   flex: 1;
   display: flex;
@@ -240,23 +262,23 @@ h1, h2, h3, h4, h5, h6, .nav-brand h1, .section-title {
 
 .slide-text h3 {
   margin: 0;
-  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-size: clamp(1.8rem, 2.8vw, 2.6rem);
   font-weight: 700;
   line-height: 1.2;
 }
 
 .slide-text p {
   margin: 0;
-  opacity: 0.9;
-  font-size: 1.2rem;
-  line-height: 1.8;
+  opacity: 0.85;
+  font-size: 1.1rem;
+  line-height: 1.9;
 }
 
 .carousel-dots {
   display: flex;
   justify-content: center;
   gap: 12px;
-  margin-top: 30px;
+  margin-top: 28px;
 }
 
 .dot {
@@ -278,8 +300,8 @@ h1, h2, h3, h4, h5, h6, .nav-brand h1, .section-title {
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  padding: 40px 60px;
+  gap: 32px;
+  padding: 36px 60px;
   max-width: 1300px;
   margin: 0 auto;
   width: 100%;
@@ -287,31 +309,31 @@ h1, h2, h3, h4, h5, h6, .nav-brand h1, .section-title {
 }
 
 .card {
-  padding: 40px 44px;
+  padding: 20px 32px;
   background: rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
   border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 24px;
+  border-radius: 16px;
   text-decoration: none;
   color: #ffffff;
   transition: all 0.35s ease;
   text-align: center;
-  font-size: 1.3rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.8), 0 0 25px rgba(255,255,255,0.12);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.7), 0 0 20px rgba(255,255,255,0.08);
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 130px;
+  min-height: 64px;
 }
 
 .card:hover {
   background: rgba(255, 255, 255, 0.1);
   border-color: rgba(255, 255, 255, 0.6);
-  transform: translateY(-6px) scale(1.04);
-  box-shadow: 0 15px 50px rgba(0,0,0,0.9), 0 0 40px rgba(255,255,255,0.2);
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.9), 0 0 30px rgba(255,255,255,0.18);
 }
 
 /* ===== PÁGINAS INTERNAS ===== */
@@ -417,8 +439,9 @@ h1, h2, h3, h4, h5, h6, .nav-brand h1, .section-title {
   .hero p { font-size: 1rem; margin-top: 15px; }
 
   .carousel { width: 94vw; }
-  .carousel-slide { height: auto; padding: 30px 20px; flex-direction: column !important; gap: 30px; }
-  .slide-image { flex: 0 0 auto; width: 100%; height: 220px; }
+  .carousel-slide { height: auto; padding: 24px 20px; flex-direction: column !important; gap: 24px; }
+  .slide-media { flex: 0 0 auto; width: 100%; height: 220px; }
+  .slide-media-placeholder { height: 220px; }
   .slide-text h3 { font-size: 1.6rem; }
   .slide-text p { font-size: 1rem; }
 
